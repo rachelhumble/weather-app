@@ -1,0 +1,42 @@
+.is-vertical {
+    margin-top: 20px;
+}
+
+.button {
+    float: right;
+    height: 50px;
+    width: 50px;
+}
+
+.search {
+    float: left;
+    height: 50px;
+    width: 320px;
+}
+
+/* p {
+    line-height: 15px;
+} */
+
+.page-title {
+    font-size: 40px;
+    text-align: center;
+}
+
+.daily {
+    width: 160px;
+    float: left;
+    border-radius: 5px;
+    border: solid red 1px;
+    margin: 5px;
+}
+
+h4 {
+    font-size: 26px;
+    color: blue;
+}
+
+h5 {
+    font-size: 22px;
+    color: orange;
+}
