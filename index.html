@@ -28,23 +28,22 @@
     </section>
 
     <div class="container is-fluid">
-
         <div class="tile is-ancestor">
             <div class="tile is-parent">
               <article class="tile is-child box">
                 <p class="title">Enter city here:</p>
-                <div class="content search">
-                    <input class="input is-rounded is-medium" id="city" type="text" placeholder="Enter city here...">
-                </div>
-                <button class="button" id="search-button">
-                    <span class="icon is-small">
-                      <img src="https://img.icons8.com/metro/26/000000/search.png">
-                    </span>
-                </button>
-                
-                <span id="city-list">Recent searches:</span>
+                <form class="content search" id="form">
+                    <input class="input is-rounded is-medium" id="city" type="text" placeholder="Enter city here..."></input>
+                    <button class="button" id="search-button">
+                      <div class="icon is-small">
+                        <img src="https://img.icons8.com/metro/26/000000/search.png">
+                      </div>
+                    </button>
+                    <hr>
+                    <span id="city-list">Recent searches:</span>
+                    <div id="recents"></div>
+                </form>  
               </article>
-              
             </div>
 
             <div class="tile is-vertical is-8">
@@ -61,16 +60,11 @@
 
               <article class="tile is-child box">
                 <p class="title" id="forecast-title">Search to view forecast</p><hr id="line">
-                <!-- <br><br><br><br><br><br><br> -->
+                <div id="daily"></div>
               </article>
             </div>  
-        </div>  
-
-        
-        
+        </div>   
     </div>
-
-
 
     <script src="assets/script.js"></script> 
 </body>

@@ -1,9 +1,9 @@
-// http://api.openweathermap.org/data/2.5/weather?q=durham&appid=bd1eaecee917e627245ddb88acbe1ae2
+jQuery(document).ready(function($){
 
-var cities = [];
-var cityList = $("#city-list");
+  var cities = [];
+  var cityList = $("#recents");
 
-function renderCities() {
+  function renderCities() {
     for (var i = 0; i < cities.length; i++) {
       var newCity = cities[i];
       var li = $("<li>");
@@ -12,39 +12,41 @@ function renderCities() {
       cityList.append(li);
     }
   }
-
-  function storage() {
-    var storedCitites = JSON.parse(localStorage.getItem("cities"));
-  
-    if (storedCities !== null) {
-      cities = storedCities;
-    }
-
-    renderCities();
-  }
   
   function storeCities() {
     localStorage.setItem("cities", JSON.stringify(cities));
   }
 
-$("#search-button").on("click", function(e) {
+  function clearPage() {
+    $("#form")[0].reset();
+    $("#temp").empty();
+    $("#humidity").empty();
+    $("#wind").empty();
+    $("#uv").empty();
+    $("#daily").empty();
+  }
+
+  function clearRecents() {
+    $("#recents").empty();
+  }
+
+  $("#search-button").on("click", function(e) {
     e.preventDefault();
+
     var city = $("#city").val().trim();
-    console.log(city);
 
     if (city === "") {
         return;
       }
 
       cities.push(city);
-    //   city.text("");
-    
+
       storeCities();
+      clearRecents();
       renderCities();
 
     //curent forecast:
     var currentURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=bd1eaecee917e627245ddb88acbe1ae2";
-    console.log(currentURL);
 
     $.ajax({
       url: currentURL,
@@ -68,8 +70,23 @@ $("#search-button").on("click", function(e) {
 
         var wind = response.wind.speed;
         $("#wind").append("Wind speed: " + wind + "mph");
-    });
 
+        //UV Index call:
+        var lat = response.coord.lat;
+        var lon = response.coord.lon;
+
+        var uvURL = "http://api.openweathermap.org/data/2.5/uvi?appid=bd1eaecee917e627245ddb88acbe1ae2" + "&lat=" + lat + "&lon=" + lon;
+        $.ajax({
+          url: uvURL,
+          method: "GET"
+        })
+          .then(function(response) {
+            var uv = response.value;
+            console.log(uv);
+            $("#uv").append("UV Index: " + uv);
+        });
+      });
+    
     //5 day forecast:
     var forecastURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=bd1eaecee917e627245ddb88acbe1ae2";
     
@@ -79,14 +96,13 @@ $("#search-button").on("click", function(e) {
         method: "GET"
       })
         .then(function(response) {
-            console.log(response);
             $("#forecast-title").replaceWith("<p class=title id=forecast-title>Forecast for " + response.city.name + ":</p>");
 
             var days = [ 2, 10, 18, 26, 34 ];
             for(i = 0; i < days.length; i++) {
                 var dayDiv = $("<div>");    
                 dayDiv.attr("class", "daily");
-                $("#line").append(dayDiv);
+                $("#daily").append(dayDiv);
 
                 var date = response.list[days[i]].dt_txt;
                 var dateDisplay = $("<h4>");
@@ -95,16 +111,13 @@ $("#search-button").on("click", function(e) {
                 dateDisplay.append(date);
 
                 var imgIcon = response.list[days[i]].weather[0].icon;
-                console.log(imgIcon);
 
                 var weatherImg = $("<img>");
                 weatherImg.attr("src", "http://openweathermap.org/img/wn/" + imgIcon + "@2x.png");
                 weatherImg.attr("alt", "weather icon");
-                console.log(weatherImg);
                 dayDiv.append(weatherImg);
 
                 var temp = response.list[days[i]].main.temp;
-                console.log(temp);
                 var tempDisplay = $("<h5>");
                 dayDiv.append(tempDisplay);
                 tempDisplay.append("Temp: " + temp + "ºF");
@@ -112,9 +125,9 @@ $("#search-button").on("click", function(e) {
                 var humidity = response.list[days[i]].main.humidity;
                 var humidityDisplay = $("<h5>");
                 humidityDisplay.append("Humidity: " + humidity + "%");
-                dayDiv.append(humidityDisplay);
-            };
-
+                dayDiv.append(humidityDisplay);            
+            };     
     });
-
+    clearPage();
+  });
 });

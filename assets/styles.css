@@ -11,7 +11,11 @@
 .search {
     float: left;
     height: 50px;
-    width: 320px;
+    width: 100%;
+}
+
+#city {
+    width: 85%;
 }
 
 /* p {
