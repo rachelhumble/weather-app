@@ -11,6 +11,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <!-- <script src="assets/moment.js"></script> -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <link rel="stylesheet" href="assets/styles.css">
     
@@ -19,7 +20,7 @@
 <body>
     <section class="hero is-primary">
         <div class="hero-body">
-          <div class="container">
+          <div class="container" id="dashboard">
             <h1 class="page-title">
               Weather Dashboard
             </h1>
@@ -30,26 +31,25 @@
     <div class="container is-fluid">
         <div class="tile is-ancestor">
             <div class="tile is-parent">
-              <article class="tile is-child box">
-                <p class="title">Enter city here:</p>
+              <article class="tile is-child box" id="search-box">
+                <p class="title" id="city-search-title">Enter city here:</p>
                 <form class="content search" id="form">
-                    <input class="input is-rounded is-medium" id="city" type="text" placeholder="Enter city here..."></input>
+                    <input class="input is-rounded is-medium" id="city" type="text" placeholder="City name..."></input>
                     <button class="button" id="search-button">
                       <div class="icon is-small">
                         <img src="https://img.icons8.com/metro/26/000000/search.png">
                       </div>
                     </button>
                     <hr>
-                    <span id="city-list">Recent searches:</span>
+                    <div id="city-list">Recent searches:</div>
                     <div id="recents"></div>
                 </form>  
               </article>
             </div>
 
             <div class="tile is-vertical is-8">
-              <article class="tile is-child box">
-                <p class="title" id="city-title">Search to find weather</p><hr>
-                <p class="subtitle"> </p>
+              <article class="tile is-child box" id="weather">
+                <p class="title" id="city-title">Search to find weather</p><hr id="weather-break">
                 <div class="content">
                   <p id="temp"></p>
                   <p id="humidity"></p>
@@ -58,7 +58,7 @@
                 </div>
               </article>
 
-              <article class="tile is-child box">
+              <article class="tile is-child box" id="forecast">
                 <p class="title" id="forecast-title">Search to view forecast</p><hr id="line">
                 <div id="daily"></div>
               </article>

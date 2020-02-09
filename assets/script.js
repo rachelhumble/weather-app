@@ -60,6 +60,7 @@ jQuery(document).ready(function($){
         var weatherImg = $("<img>");
         weatherImg.attr("src", "http://openweathermap.org/img/wn/" + imgIcon + "@2x.png");
         weatherImg.attr("alt", "weather icon");
+        weatherImg.attr("id", "weather-img");
         $("#city-title").append(weatherImg);
 
         var temp = response.main.temp;

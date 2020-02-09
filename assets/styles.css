@@ -1,3 +1,20 @@
+.hero.is-primary {
+    background-color: #C2CDAA;
+    color: #616161;
+    font-size: 50px;
+    text-align: center;
+}
+
+body {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.title {
+    color: #6a705c;
+    font-size: 25px;
+
+}
+
 .is-vertical {
     margin-top: 20px;
 }
@@ -18,29 +35,114 @@
     width: 85%;
 }
 
-/* p {
-    line-height: 15px;
-} */
+#city-title {
+    margin-bottom: 0;
+}
+
+#city-search-title {
+    font-size: 34px;
+    color: #6a705c;
+}
 
 .page-title {
-    font-size: 40px;
-    text-align: center;
+    padding-top: 20px;
 }
 
 .daily {
     width: 160px;
     float: left;
     border-radius: 5px;
-    border: solid red 1px;
+    border: solid #fcfff4 2px;
+    background-color: #f9ffeb;
     margin: 5px;
+    text-align: center;
 }
 
 h4 {
     font-size: 26px;
-    color: blue;
+    color: #6a705c;
 }
 
 h5 {
     font-size: 22px;
-    color: orange;
+    color: #8ca15e;
 }
+
+#weather {
+    line-height: .5em;
+    font-size: 18px;
+}
+
+#weather-break {
+    margin-top: 0;
+}
+#weather-img {
+    height: 85px;
+    width: 85px;
+}
+
+@media only screen and (max-width: 1300px) {
+    .title {
+        font-size: 18px;
+        text-align: center;
+    }
+    
+    .hero.is-primary {
+        height: 150px;
+        font-size: 40px;
+    }
+
+    .page-title {
+        padding-top: 0px;
+    }
+
+    #city-search-title {
+        font-size: 25px;
+    }
+
+    #search-box {
+        height: 310px;
+    }
+
+    #city {
+        width: 80%;
+    }
+
+    #weather-break {
+        margin-top: 20px;
+    }
+
+    #city-list {
+        text-align: center;
+    }
+    
+    #recents {
+        text-align: center;
+    }
+
+    .content {
+        text-align: center;
+    }
+
+    #forecast {
+        height: 1250px;
+    }
+    .daily {
+        width: 190px;
+        height: 220px;
+        border-radius: 25px;
+        padding: 20px;
+    }
+
+    #daily {
+        margin-left: 45px;
+    }
+
+    h4 {
+        font-size: 20px;
+    }
+    
+    h5 {
+        font-size: 18px;
+    }
+}    
