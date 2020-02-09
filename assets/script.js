@@ -76,7 +76,7 @@ jQuery(document).ready(function($){
         var lat = response.coord.lat;
         var lon = response.coord.lon;
 
-        var uvURL = "http://api.openweathermap.org/data/2.5/uvi?appid=bd1eaecee917e627245ddb88acbe1ae2" + "&lat=" + lat + "&lon=" + lon;
+        var uvURL = "https://api.openweathermap.org/data/2.5/uvi?appid=bd1eaecee917e627245ddb88acbe1ae2" + "&lat=" + lat + "&lon=" + lon;
         $.ajax({
           url: uvURL,
           method: "GET"
